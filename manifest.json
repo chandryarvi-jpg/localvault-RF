@@ -1,0 +1,17 @@
+{
+  "name": "LocalVault",
+  "short_name": "LocalVault",
+  "description": "Private PDF, image, text and utility tools. Processed 100% on your device.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f6f8fb",
+  "theme_color": "#3b82f6",
+  "categories": ["utilities", "productivity"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
