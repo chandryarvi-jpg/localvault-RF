@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>LocalVault</title>
+<title>LocalVault-RF</title>
 <meta name="description" content="Private PDF, image, text and utility tools. Processed 100% on your device. Works offline.">
 <meta name="theme-color" content="#3b82f6">
 <link rel="manifest" href="manifest.json">
@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="LocalVault">
+<meta name="apple-mobile-web-app-title" content="LocalVault-RF">
 <script>try{if(localStorage.getItem('lv-theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}</script>
 <style>
 :root{--bg:#f6f8fb;--card:#fff;--text:#101828;--muted:#667085;--line:#e4e8ef;--accent:#3b82f6;--accent2:#2563eb;--soft:#eef4ff;--field:#fff;--okbg:#ecfdf3;--ok:#067647;--errbg:#fef3f2;--err:#b42318}
@@ -102,7 +102,7 @@ input[type=color]{width:56px;height:44px;padding:2px;border:1px solid var(--line
 .bar i{display:block;height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .25s}
 
 /* file rows and results */
-.list{display:grid;gap:8px}
+.list{display:grid;gap:8px;grid-template-columns:minmax(0,1fr)}
 .list:empty{display:none}
 .item,.res{display:flex;align-items:center;gap:12px;padding:10px 12px;background:var(--card);border:1px solid var(--line);border-radius:12px}
 .th{width:48px;height:48px;border-radius:9px;background:var(--soft);color:var(--accent);display:grid;place-items:center;overflow:hidden;flex-shrink:0}
@@ -115,7 +115,7 @@ input[type=color]{width:56px;height:44px;padding:2px;border:1px solid var(--line
 .meta small{color:var(--muted);font-size:13px}
 .acts{display:flex}
 .acts .icon-btn{width:36px;height:36px}
-.res-wrap{display:grid;gap:8px;padding:14px;border:1px solid var(--ok);border-radius:16px;background:var(--okbg)}
+.res-wrap{display:grid;gap:8px;grid-template-columns:minmax(0,1fr);padding:14px;border:1px solid var(--ok);border-radius:16px;background:var(--okbg)}
 .res-head{display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--ok);font-weight:600}
 .lb{position:fixed;inset:0;z-index:100;background:rgba(8,12,24,.88);display:grid;place-items:center;padding:16px;cursor:zoom-out}
 .lb img{max-width:96vw;max-height:90vh;background:#fff;border-radius:8px}
@@ -138,8 +138,8 @@ input[type=color]{width:56px;height:44px;padding:2px;border:1px solid var(--line
 .stat span{font-size:13px;color:var(--muted)}
 
 /* text tools */
-.split{display:grid;gap:14px}
-@media(min-width:800px){.split{grid-template-columns:1fr 1fr}}
+.split{display:grid;gap:14px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:800px){.split{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
 .out-box{white-space:pre-wrap;word-break:break-word;font-size:14px;min-height:60px}
 pre.code{margin:0;max-height:440px;overflow:auto;white-space:pre-wrap;word-break:break-word;font:13px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
 .md{line-height:1.65;word-break:break-word}
@@ -217,6 +217,9 @@ pre.code{margin:0;max-height:440px;overflow:auto;white-space:pre-wrap;word-break
 
 /* toast */
 #toasts{position:fixed;left:0;right:0;bottom:calc(16px + env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;gap:8px;z-index:200;pointer-events:none}
+.foot{max-width:980px;margin:0 auto;padding:18px 16px calc(28px + env(safe-area-inset-bottom));border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:space-between;font-size:13px;color:var(--muted)}
+.foot b{color:var(--text);letter-spacing:-.01em}
+.foot>div{max-width:560px;line-height:1.5}
 .toast{pointer-events:auto;max-width:92vw;padding:11px 16px;border-radius:11px;background:#101828;color:#fff;font-size:14px;box-shadow:0 6px 24px rgba(0,0,0,.25);transition:opacity .35s,transform .35s}
 .toast.err{background:#b42318}
 .toast.ok{background:#067647}
@@ -227,7 +230,7 @@ pre.code{margin:0;max-height:440px;overflow:auto;white-space:pre-wrap;word-break
 <body>
 <aside class="side" id="side">
   <div class="brand">
-    <a href="#/" class="logo"><i id="logoIco"></i>LocalVault</a>
+    <a href="#/" class="logo"><i id="logoIco"></i>LocalVault-RF</a>
     <button class="icon-btn close-side" id="closeSide" aria-label="Close menu"></button>
   </div>
   <div class="search"><span id="searchIco"></span><input class="f" id="q" type="search" placeholder="Search tools" autocomplete="off"></div>
@@ -238,13 +241,14 @@ pre.code{margin:0;max-height:440px;overflow:auto;white-space:pre-wrap;word-break
 <div class="shell">
   <header class="top">
     <button class="icon-btn" id="menu" aria-label="Open menu"></button>
-    <a class="top-title" href="#/">LocalVault</a>
+    <a class="top-title" href="#/">LocalVault-RF</a>
     <span class="grow"></span>
     <span class="priv hidden" id="net">Offline mode</span>
     <button class="btn sm hidden" id="install">Install app</button>
     <button class="icon-btn" id="theme" aria-label="Toggle dark mode"></button>
   </header>
   <main class="main" id="main"></main>
+  <footer class="foot"><div><b>&copy; <span id="yr"></span> LocalVault-RF.</b> All rights reserved.<br>Dilarang menggandakan, mendistribusikan ulang, atau memperjualbelikan ulang tanpa izin tertulis.</div><div>Processed 100% on your device. Your files are never uploaded.</div></footer>
 </div>
 <div id="toasts"></div>
 <noscript><p style="padding:20px">LocalVault needs JavaScript to run.</p></noscript>
@@ -702,7 +706,7 @@ function buildNav(filter){
 function setDrawer(open){$('#side').classList.toggle('open',open);$('#overlay').classList.toggle('on',open)}
 
 function renderHome(main){
-  document.title='LocalVault';
+  document.title='LocalVault-RF';
   const iosHint=/iphone|ipad|ipod/i.test(navigator.userAgent);
   main.innerHTML=
     '<section class="hero"><h1>Your files stay on this device.</h1>'+
@@ -733,7 +737,7 @@ function renderHome(main){
 }
 
 function renderTool(main,tool){
-  document.title=tool.name+' | LocalVault';
+  document.title=tool.name+' | LocalVault-RF';
   main.innerHTML='<div class="tool-head"><span class="ti">'+ico(tool.icon,26)+'</span><div><h1>'+esc(tool.name)+'</h1><p>'+esc(tool.desc)+'</p><span class="priv">'+ico('shield',14)+' Processed 100% on your device</span></div></div><div id="tbody"></div>';
   const body=$('#tbody',main);
   try{
@@ -766,6 +770,7 @@ function setTheme(dark){
 }
 
 function bootCore(){
+  $('#yr').textContent=new Date().getFullYear();
   $('#logoIco').innerHTML=ico('lock',18);
   $('#searchIco').innerHTML=ico('search',16);
   $('#menu').innerHTML=ico('menu',22);
@@ -801,7 +806,7 @@ function bootCore(){
     const had=!!navigator.serviceWorker.controller;
     let shown=false;
     navigator.serviceWorker.addEventListener('controllerchange',()=>{
-      if(had&&!shown){shown=true;toast('LocalVault was updated. Tap here to reload.','ok',()=>location.reload())}
+      if(had&&!shown){shown=true;toast('LocalVault-RF was updated. Tap here to reload.','ok',()=>location.reload())}
     });
     window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
   }
